@@ -43,7 +43,7 @@ export class ProductsService {
   }
 
   update(id: string, updateProductDto: UpdateProductDto) {
-    const {id:_, ...values} = updateProductDto;
+    const {id:__, ...values} = updateProductDto;
     const product = this.findOne(id);
 
   }
