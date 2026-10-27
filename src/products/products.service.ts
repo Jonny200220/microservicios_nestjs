@@ -1,11 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { v4 as uuidv4 } from 'uuid';
+
 import { CreateProductDto } from './dto/create-product.dto.js';
 import { UpdateProductDto } from './dto/update-product.dto.js';
 
+import { Product } from './entities/product.entity.js';
+
 @Injectable()
 export class ProductsService {
+
+
+  private products: Product[] = [];
+
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    
+    const {name, description, price} = createProductDto;
+
+    const newProduct = new Product(
+      uuidv4(),
+      name,
+      description,
+      price,
+    );
+    this.products.push(newProduct);
+    return newProduct;
+
   }
 
   findAll() {
