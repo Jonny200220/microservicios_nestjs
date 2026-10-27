@@ -31,7 +31,7 @@ export class ProductsService {
     return this.products;
   }
 
-  findOne(id: string) {
+  findOne(id: string): Product {
 
     const product = this.products.find(product => product.id == id);
 
@@ -42,11 +42,14 @@ export class ProductsService {
     return product;
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
+  update(id: string, updateProductDto: UpdateProductDto) {
     return `This action updates a #${id} product`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  remove(id: string): Product {
+    const product = this.findOne(id);
+
+    this.products.filter(product => product.id != id);
+    return product;
   }
 }
