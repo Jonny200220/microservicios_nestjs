@@ -9,12 +9,15 @@ export class ProductsController {
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+    // return this.productsService.create(createProductDto);
+    console.log({createProductDto});
+    return createProductDto;
   }
 
   @Get()
   findAll() {
-    return this.productsService.findAll();
+    // return this.productsService.findAll();
+    return 'Hola mundo'
   }
 
   @Get(':id')
