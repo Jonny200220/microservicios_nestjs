@@ -32,20 +32,17 @@ export class ProductsService {
   }
 
   findOne(id: string): Product {
-
     const product = this.products.find(product => product.id == id);
-
     if (!product) {
       throw new NotFoundException('Product not found');
     }
-
     return product;
   }
 
   update(id: string, updateProductDto: UpdateProductDto) {
-    const {id:__, ...values} = updateProductDto;
+    const {id:__, name, description, price} = updateProductDto;
     const product = this.findOne(id);
-    product.updateWith(values);
+    product.updateWith({name, description, price});
     return {
       message: 'Product updated successfully',
       product,
@@ -54,7 +51,6 @@ export class ProductsService {
 
   remove(id: string): Product {
     const product = this.findOne(id);
-
     this.products.filter(product => product.id != id);
     return product;
   }
