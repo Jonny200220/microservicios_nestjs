@@ -10,7 +10,7 @@ const envSchema = Joi.object({
 })
     .unknown(true);
 
-const { error, value } = envSchema.validate( process.env );
+const { error, value } = envSchema.validate(process.env);
 
 if (error) {
     throw new Error(`Config Validation Error: ${error.message}`);
