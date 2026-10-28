@@ -14,7 +14,7 @@ async function bootstrap() {
     transform: true,
   }),);
 
-  await app.listen(envs.port);  
+  await app.listen(envs.port);
   console.log(`Server is running on port ${envs.port}`);
 }
 await bootstrap();
